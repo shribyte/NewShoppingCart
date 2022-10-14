@@ -43,13 +43,17 @@ def add(id):
     addedcartitem = CartItem.query.get_or_404(id)
 
     if request.method == 'POST':
-        addedcartitem.quantity = request.form['quantity']
-
         try:
+            prev_quantity = addedcartitem.quantity
+            addedcartitem.quantity = request.form['quantity']
+            db.session.commit()
+            new_quantity = addedcartitem.quantity
+            addedcartitem.quantity = prev_quantity + new_quantity
             db.session.commit()
             return redirect('/')
         except:
-            return "There was an error adding inventory"
+            cartitems = CartItem.query.all()
+            return render_template('index.html', cartitems = cartitems)
     
     return "Error in add route"
 
