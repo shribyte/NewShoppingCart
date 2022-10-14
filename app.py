@@ -34,7 +34,15 @@ class CartItem(db.Model):
 @app.route('/')
 def index():
     cartitems = CartItem.query.all()
-    return render_template('index.html', cartitems=cartitems)
+    total_quantity = 0
+    total_cost = 0
+    try:
+        for cartitem in cartitems:
+            total_quantity += (cartitem.quantity)
+            total_cost += (cartitem.quantity) * (cartitem.cost)
+        return render_template('index.html', cartitems=cartitems, total_quantity=total_quantity, total_cost=total_cost)
+    except:
+        return render_template('index.html', cartitems=cartitems, total_quantity=total_quantity, total_cost=total_cost)
 
     
 @app.route('/add/<int:id>', methods=['POST'])
@@ -52,8 +60,7 @@ def add(id):
             db.session.commit()
             return redirect('/')
         except:
-            cartitems = CartItem.query.all()
-            return render_template('index.html', cartitems = cartitems)
+            return redirect('/')
     
     return "Error in add route"
 
