@@ -24,7 +24,7 @@
             <td>{{ cartitem.quantity }}</td>
             <td>
                 <form action="/add/{{cartitem.id}}" method="POST">
-                    <input type="integer" quantity="content" id="content">
+                    <input type="integer" name="quantity">
                     <input type="submit" value="Add">
                 </form>
             </td>
