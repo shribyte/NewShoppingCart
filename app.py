@@ -57,7 +57,15 @@ def add(id):
     
     return "Error in add route"
 
-
+@app.route('/delete/<int:id>')
+def delete(id):
+    cartitem_to_delete = CartItem.query.get_or_404(id)
+    try:
+        cartitem_to_delete.quantity = 0
+        db.session.commit()
+        return redirect('/')
+    except:
+        return 'There was a problem deleting that task'
 
 if __name__ == "__main__":
     app.run(debug=True)
