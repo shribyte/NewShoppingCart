@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Shopping Cart</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Item</th>
+            <th>Cost</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+        
+        <tr>
+            <td>1</td>
+            <td>Apple</td>
+            <td>10</td>
+            <td>
+                <form action="/add" method="POST">
+                <input type="integer" quantity="content">
+                <input type="submit" value="Add">
+                </form>
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>Banana</td>
+            <td>5</td>
+            <td></td>
+            <td>
+                
+            </td>
+        </tr>
+
+        <tr>
+            <td>3</td>
+            <td>Orange</td>
+            <td>8</td>
+            <td></td>
+            <td>
+                
+            </td>
+        </tr>
+
+        <tr>
+            <td>4</td>
+            <td>Watermelon</td>
+            <td>20</td>
+            <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        
+    </table>
+</div>
+{% endblock %}
