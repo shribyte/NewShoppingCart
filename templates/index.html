@@ -10,57 +10,27 @@
     <table>
         <tr>
             <th>ID</th>
-            <th>Item</th>
+            <th>Item Name</th>
             <th>Cost</th>
-            <th>Quantity</th>
-            <th>Actions</th>
+            <th>Current Quantity</th>
+            <th>Add</th>
+            <th>Delete</th>
         </tr>
-        
+        {% for cartitem in cartitems %}
         <tr>
-            <td>1</td>
-            <td>Apple</td>
-            <td>10</td>
+            <td>{{ cartitem.id }}</td>
+            <td>{{ cartitem.name }}</td>
+            <td>{{ cartitem.cost }}</td>
+            <td>{{ cartitem.quantity }}</td>
             <td>
-                <form action="/add" method="POST">
-                <input type="integer" quantity="content">
-                <input type="submit" value="Add">
+                <form action="/add/{{cartitem.id}}" method="POST">
+                    <input type="integer" quantity="content" id="content">
+                    <input type="submit" value="Add">
                 </form>
             </td>
-            <td>
-                
-            </td>
-        </tr>
-
-        <tr>
-            <td>2</td>
-            <td>Banana</td>
-            <td>5</td>
             <td></td>
-            <td>
-                
-            </td>
         </tr>
-
-        <tr>
-            <td>3</td>
-            <td>Orange</td>
-            <td>8</td>
-            <td></td>
-            <td>
-                
-            </td>
-        </tr>
-
-        <tr>
-            <td>4</td>
-            <td>Watermelon</td>
-            <td>20</td>
-            <td></td>
-            <td>
-                
-            </td>
-        </tr>
-        
+        {% endfor %}
     </table>
 </div>
 {% endblock %}
