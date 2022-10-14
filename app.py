@@ -43,7 +43,7 @@ def add(id):
     addedcartitem = CartItem.query.get_or_404(id)
 
     if request.method == 'POST':
-        addedcartitem.quantity = request.form['content']
+        addedcartitem.quantity = request.form['quantity']
 
         try:
             db.session.commit()
