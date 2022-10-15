@@ -36,28 +36,13 @@ def index():
     cartitems = CartItem.query.all()
     total_quantity = 0
     total_cost = 0
-    shipping_cost = 0
-    total_prehst = 0
-    hst = 0
-    total = 0
     try:
         for cartitem in cartitems:
             total_quantity += (cartitem.quantity)
             total_cost += (cartitem.quantity) * (cartitem.cost)
-        if 0 < total_cost < 50:
-            shipping_cost = 15
-        elif 50 <= total_cost < 100:
-            shipping_cost = 5
-        else:
-            shipping_cost = 0
-        total_prehst = total_cost + shipping_cost
-        hst = round(0.13 * total_prehst, 2)
-        total = total_prehst + hst
-        return render_template('index.html', cartitems=cartitems, total_quantity=total_quantity, total_cost=total_cost, \
-            shipping_cost=shipping_cost, total_prehst=total_prehst, hst=hst, total=total)
+        return render_template('index.html', cartitems=cartitems, total_quantity=total_quantity, total_cost=total_cost)
     except:
-        return render_template('index.html', cartitems=cartitems, total_quantity=total_quantity, total_cost=total_cost, \
-            shipping_cost=shipping_cost, total_prehst=total_prehst, hst=hst, total=total)
+        return render_template('index.html', cartitems=cartitems, total_quantity=total_quantity, total_cost=total_cost)
 
     
 @app.route('/add/<int:id>', methods=['POST'])
