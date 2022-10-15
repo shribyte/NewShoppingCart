@@ -20,7 +20,7 @@
         <tr>
             <td>{{ cartitem.id }}</td>
             <td>{{ cartitem.name }}</td>
-            <td>{{ cartitem.cost }}</td>
+            <td>${{ cartitem.cost }}</td>
             <td>{{ cartitem.quantity }}</td>
             <td>
                 <form action="/add/{{cartitem.id}}" method="POST">
@@ -34,10 +34,33 @@
         <tr>
             <td></td>
             <td></td>
-            <td>Total Cost: {{ total_cost }}</td>
+            <td></td>
             <td>Total Quantity: {{ total_quantity }}</td>
             <td></td>
             <td></td>
+        </tr>
+    </table>
+    <h1 style="text-align: center">Order Summary</h1>
+    <table>
+        <tr>
+            <th>Subtotal excluding delivery</th>
+            <td>${{ total_cost }}</td>
+        </tr>
+        <tr>
+            <th>Shipping</th>
+            <td>${{ shipping_cost }}</td>
+        </tr>
+        <tr>
+            <th>Subtotal excluding taxes</th>
+            <td>${{ total_prehst }}</td>
+        </tr>
+        <tr>
+            <th>HST</th>
+            <td>${{ hst }}</td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <td>${{ total }}</td>
         </tr>
     </table>
 </div>
