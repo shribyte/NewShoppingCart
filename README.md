@@ -1,3 +1,5 @@
+Heroku Application Link: https://flaskshoppingcart.herokuapp.com
+
 This is a web app developed using Flask, HTML/CSS and SQLite. 
 It consists of a shopping store with 4 fruits available, namely Apple, Banana, Orange and Watermelon. The costs are stored as constants. 
 
